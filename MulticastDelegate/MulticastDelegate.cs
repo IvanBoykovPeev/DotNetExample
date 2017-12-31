@@ -27,20 +27,20 @@ namespace MulticastDelegate
 
         static void PrintStringInvocatioList(Delegate aDelegate)
         {
-            Console.WriteLine("(");
+            Console.Write("(");
             Delegate[] list = aDelegate.GetInvocationList();
             foreach (Delegate d in list)
             {
-                Console.WriteLine(" {0}", d.Method.Name);
+                Console.Write(" {0}", d.Method.Name);
             }
             Console.WriteLine(" )");
         }
 
         static void Main(string[] args)
-        {
+        {            
             TestMulticastDelegate tmd = new TestMulticastDelegate();
             StringDelegate printDelegate = new StringDelegate(tmd.PrintString);
-            StringDelegate printLenghtDelegate = new StringDelegate(tmd.PrintString);
+            StringDelegate printLenghtDelegate = new StringDelegate(tmd.PrintStringLength);
             StringDelegate printWithDateDelegate = new StringDelegate(PrintStringWithDate);
             PrintStringInvocatioList(printDelegate);
             //Prints: (PrintString)
