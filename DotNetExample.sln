@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetExample", "DotNetExample\DotNetExample.csproj", "{B82DB6E8-D2A2-4E6A-AB13-B4B2D3A46328}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingleCastDelegateExample", "DotNetExample\SingleCastDelegateExample.csproj", "{B82DB6E8-D2A2-4E6A-AB13-B4B2D3A46328}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MulticastDelegate", "MulticastDelegate\MulticastDelegate.csproj", "{3E3D0B25-7AF8-4820-8A74-7901019A18B1}"
 EndProject
