@@ -25,6 +25,7 @@ namespace ConnectionSamples
             Console.WriteLine("Connection opened");
 
             //ConnectWithSqlCommand(connection);
+
             ConnectWithSqlCommandWithParameters(connection);
 
             connection.Close();
