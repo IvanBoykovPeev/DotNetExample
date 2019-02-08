@@ -19,19 +19,63 @@ namespace ConnectionSamples
         {
             string connectionString = @"server=.;" +
             "integrated security=true;database=AdventureWorks2014";
+
             var connection = new SqlConnection(connectionString);
-            connection.Open();
-            // Do something useful
-            Console.WriteLine("Connection opened");
+
+            //try
+            //{
+            //connection.Open();
+            //Console.WriteLine("Connection opened");
 
             //ConnectWithSqlCommand(connection);
 
-            ConnectWithSqlCommandWithParameters(connection);
+            //ConnectWithSqlCommandWithParameters(connection);
 
-            connection.Close();
+
+
+
+            //}
+            //catch (SqlException ex)
+            //{
+            //    Console.WriteLine(ex.Message); ;
+            //}
+            //finally
+            //{
+            //    connection.Close();
+
+            //}
+
+            ExecuteNonQuery(connection);
+
             if (connection.State == ConnectionState.Closed)
             {
                 Console.WriteLine("Connection closed");
+            }
+        }
+
+        private static void ExecuteNonQuery(SqlConnection connection)
+        {
+            try
+            {
+                using (connection)
+                {
+                    string sql = "INSERT INTO [dbo].[DimSalesTerritory]" +
+                        "([SalesTerritoryRegion], [SalesTerritoryCountry], [SalesTerritoryAlternateKey], [SalesTerritoryGroup]) " +
+                        "VALUES (@SalesTerritoryRegion, @Country, @TerritoryAlternateKey, @TerritoryGroup)";
+                    var command = new SqlCommand(sql, connection);
+                    command.Parameters.AddWithValue("SalesTerritoryRegion", "Central");
+                    command.Parameters.AddWithValue("Country", "Australia");
+                    command.Parameters.AddWithValue("TerritoryAlternateKey", "55");
+                    command.Parameters.AddWithValue("TerritoryGroup", "Europe");
+
+                    connection.Open();
+                    int records = command.ExecuteNonQuery();
+                    Console.WriteLine($"{records} inserted");
+                }
+            }
+            catch(SqlException ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
 
